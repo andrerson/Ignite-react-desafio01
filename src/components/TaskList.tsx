@@ -26,6 +26,23 @@ export function TaskList() {
       title: newTaskTitle,
       isComplete: false
     }])
+    setNewTaskTitle('');
+
+    /*Solução do desafio pela rocketseat 
+
+      if(!newTaskTitle) return;
+
+      const newTask = {
+        id : Math.random(),
+        title: newTaskTitle,
+        isComplete: false
+      }
+
+      setTasks(oldState => [...oldState, newTask])
+      setNewTaskTitle('');
+
+    */
+
   }
 
   function handleToggleTaskCompletion(id: number) {
@@ -38,6 +55,15 @@ export function TaskList() {
         setTasks([...updateTasks])
       }
     });
+
+    /*Solução do desafio pela rocketseat 
+      const newTasks = tasks.map(task => task.id === id ? {
+        ...task,
+        isComplete: !task.isComplete
+      }: task)
+
+      setTasks(newTasks)
+    */
   }
 
   function handleRemoveTask(id: number) {
@@ -50,6 +76,12 @@ export function TaskList() {
         setTasks([...removeTasks]);
       }
     })
+
+    /*Solução do desafio pela rocketseat 
+
+      const filteredTasks = tasks.filter(task => task.id !== id);
+      setTasks(filteredTasks)
+    */
   }
 
   return (
